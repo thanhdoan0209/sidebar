@@ -23,6 +23,7 @@ header.innerHTML = `
 var seachInput = document.createElement('input');
 seachInput.type = 'text';
 seachInput.placeholder = "Search...";
+seachInput.id = 'search-input'; // Thêm ID cho ô tìm kiếm
 
 sidebar.appendChild(header);
 sidebar.appendChild(seachInput);
@@ -71,6 +72,29 @@ var data = {
     ]
 };
 
+function filterMenu() {
+    const searchValue = document.getElementById('search-input').value.toLowerCase();
+    const sections = document.querySelectorAll('.section');
+
+    sections.forEach(section => {
+        const items = section.querySelectorAll('.content li');
+        let sectionHasVisibleItems = false;
+
+        items.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(searchValue)) {
+                item.style.display = ''; // Hiện item nếu khớp
+                sectionHasVisibleItems = true;
+            } else {
+                item.style.display = 'none'; // Ẩn item nếu không khớp
+            }
+        });
+
+        // Ẩn section nếu không có item nào hiển thị
+        section.style.display = sectionHasVisibleItems ? '' : 'none';
+    });
+}
+
 function loadMenu() {
 
     console.log('voooo ne');
@@ -83,12 +107,21 @@ function loadMenu() {
         var sectionDiv = document.createElement('div');
         sectionDiv.className = 'section';
 
-        var h2 = document.createElement('h2');
+        // Tính số lượng items và sub-items
+        let count = 0;
+
+        section.items.forEach(function(item) {
+            count += item.subItems.length; // Đếm các sub-items
+        });
+
+        const h2 = document.createElement('h2');
         h2.className = 'label_pane';
         h2.innerHTML = `
             <span class="label_pane-icon">🟢</span> ${section.title}
+            <span class="label_pane-count">(${count})</span>
             <span class="label_pane-expand">➕</span>
         `;
+
 
         var ul = document.createElement('ul');
         ul.className = 'content';
@@ -96,7 +129,10 @@ function loadMenu() {
         section.items.forEach(function(item) {
             var li = document.createElement('li');
             li.innerHTML = `
-                <span>${item.text}</span>
+                <div class="content_header">
+                    <span>${item.text}</span>
+                    <span class="content-count">(${item.subItems.length})</span>
+                </div>
             `;
 
             if (item.subItems.length > 0) {
@@ -163,9 +199,14 @@ function loadMenu() {
             }
         });
     });
+
+
+    // Gọi hàm filterMenu khi nhập vào ô tìm kiếm
+    document.getElementById('search-input').addEventListener('input', filterMenu);
 }
 
 // Gọi hàm loadMenu khi trang được load
 window.onload = function() {
     loadMenu();
+    filterMenu(); // Gọi hàm tìm kiếm để khởi tạo
 };

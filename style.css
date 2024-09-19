@@ -1,5 +1,5 @@
 .horizon-check {
-    width: auto;
+    width: 100%;
 }
 
 #root {
@@ -48,15 +48,16 @@
 .header {
     display: flex;
     justify-content: space-between;
-    /* Đẩy các phần tử ra hai bên */
     align-items: center;
-    /* Canh giữa các phần tử theo chiều dọc */
     padding: 10px;
-    /* Thêm khoảng cách bên trong nếu cần */
     background-color: #f8f8f8;
-    /* Thay đổi màu nền nếu cần */
     border-bottom: 1px solid #ddd;
-    /* Thêm đường viền dưới nếu cần */
+    position: sticky;
+    /* Cố định header */
+    top: 0;
+    /* Cố định ở trên cùng */
+    z-index: 100;
+    /* Đảm bảo header luôn ở trên */
 }
 
 .header span {
@@ -95,7 +96,7 @@ input[type="text"] {
 }
 
 .section h2,
-.content li span {
+.content_header {
     font-size: 13px;
     cursor: pointer;
     background-color: #e0e0e0;
@@ -118,7 +119,7 @@ input[type="text"] {
 }
 
 .section h2.active,
-.content li.active span {
+.content li.active .content_header {
     background-color: #006b68;
     /* Màu xanh ngọc đậm khi active */
     color: white;
@@ -130,8 +131,8 @@ input[type="text"] {
 
 .section ul.content {
     list-style: none;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 5px;
+    margin: 10px 10px;
     display: none;
     /* Bắt đầu ẩn */
     background-color: #f0f0f0;
@@ -208,4 +209,22 @@ input[type="text"]:focus {
     /* Thay đổi màu viền khi ô tìm kiếm được chọn */
     box-shadow: 0 0 5px rgba(0, 191, 165, 0.5);
     /* Thêm bóng cho ô tìm kiếm khi focus */
+}
+
+.label_pane-count,
+.content-count {
+    background-color: red;
+    /* Màu nền đỏ */
+    color: white;
+    /* Màu chữ trắng */
+    padding: 2px 5px;
+    /* Khoảng cách bên trong */
+    border-radius: 4px;
+    /* Bo tròn góc */
+    margin-left: 10px;
+    /* Khoảng cách với tiêu đề */
+    font-size: 12px;
+    /* Kích thước chữ */
+    float: right;
+    /* Đẩy sang bên phải */
 }
