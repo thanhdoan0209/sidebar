@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Right with label_pane</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="root">
+    <div class="sidebar">
+        <div class="header">
+            <div class="expand-icon">&#9776;</div>
+            <span>Danh sách lỗi</span>
+            <span class="count">11</span>
+        </div>
+        <input type="text" placeholder="Search...">
+
+        <!-- Khách hàng section -->
+        <div class="section">
+            <h2 class="label_pane">
+                <span class="label_pane-icon">🟢</span> Khách hàng
+                <span class="label_pane-expand">➕</span>
+            </h2>
+            <ul class="content">
+                <li><span>Thông tin nhân thân</span>
+                    <ul class="sub-content">
+                        <li>Họ và tên (có dấu)</li>
+                        <li>Hình thức cư trú (tại địa bàn CN)</li>
+                    </ul>
+                </li>
+                <li><span>Người tham chiếu</span>
+                    <ul class="sub-content">
+                        <li>MQH với KH vay</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Nghề nghiệp section -->
+        <div class="section">
+            <h2 class="label_pane">
+                <span class="label_pane-icon">🟢</span> Nghề nghiệp
+                <span class="label_pane-expand">➕</span>
+            </h2>
+            <ul class="content">
+                <li><span>Thông tin nghề nghiệp - Khách hàng: [Tên khách hàng] - CIF: [Số CIF]</span>
+                    <ul class="sub-content">
+                        <li>Hình thức cư trú (tại địa bàn CN)</li>
+                        <li>Hình thức nhận lương</li>
+                        <li>Thời gian làm việc trong ngành nghề</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tài chính section -->
+        <div class="section">
+            <h2 class="label_pane">
+                <span class="label_pane-icon">🟢</span> Tài chính
+                <span class="label_pane-expand">➕</span>
+            </h2>
+            <ul class="content">
+                <li><span>A - Thu nhập</span>
+                    <ul class="sub-content">
+                        <li>TNCN001</li>
+                        <li>TNCN021</li>
+                    </ul>
+                </li>
+                <li><span>Quan hệ với TCTD</span>
+                    <ul class="sub-content">
+                        <li>Dư nợ VND</li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="footer">
+            <button id="light-mode-label_pane">Light Mode</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

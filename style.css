@@ -1,0 +1,211 @@
+.horizon-check {
+    width: auto;
+}
+
+#root {
+    display: flex;
+    justify-content: space-between;
+}
+
+.body_sidebar {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    /* Đẩy sidebar về phía bên phải */
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    transition: margin-right 0.3s ease-in-out;
+}
+
+.sidebar {
+    width: 100%;
+    /* Sidebar chiếm 30% chiều rộng */
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow-y: auto;
+    /* Cho phép cuộn nếu nội dung quá dài */
+    position: relative;
+    transition: width 0.3s ease-in-out;
+    /* Thay đổi chiều rộng khi thu nhỏ */
+}
+
+.body_sidebar.collapsed {
+    width: 8% !important;
+    /* Thu nhỏ sidebar khi collapsed */
+}
+
+.expand-icon {
+    padding: 10px;
+    cursor: pointer;
+    transition: left 0.3s;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    /* Đẩy các phần tử ra hai bên */
+    align-items: center;
+    /* Canh giữa các phần tử theo chiều dọc */
+    padding: 10px;
+    /* Thêm khoảng cách bên trong nếu cần */
+    background-color: #f8f8f8;
+    /* Thay đổi màu nền nếu cần */
+    border-bottom: 1px solid #ddd;
+    /* Thêm đường viền dưới nếu cần */
+}
+
+.header span {
+    margin-right: 10px;
+    /* Thêm khoảng cách giữa các phần tử nếu cần */
+    padding: 5px;
+}
+
+.header .count {
+    background-color: red;
+    color: white;
+    margin-left: auto;
+    /* Đẩy phần tử .count sang bên phải */
+}
+
+.sidebar.collapsed .expand-icon {
+    left: 20px;
+    /* Đảm bảo icon luôn ở bên trái khi thu nhỏ */
+}
+
+.header,
+.section,
+.footer,
+input[type="text"] {
+    transition: opacity 0.3s;
+}
+
+.sidebar.collapsed .header span,
+.sidebar.collapsed .section,
+.sidebar.collapsed .footer,
+.sidebar.collapsed input[type="text"] {
+    opacity: 0;
+    /* Ẩn nội dung khi thu nhỏ sidebar */
+    pointer-events: none;
+    /* Không thể tương tác với nội dung khi sidebar thu nhỏ */
+}
+
+.section h2,
+.content li span {
+    font-size: 13px;
+    cursor: pointer;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    margin: 5px 10px;
+}
+
+.section h2 {
+    font-size: 14px;
+}
+
+.content li span {
+    font-size: 13px;
+}
+
+.section h2.active,
+.content li.active span {
+    background-color: #006b68;
+    /* Màu xanh ngọc đậm khi active */
+    color: white;
+}
+
+.section h2 .label_pane-icon {
+    margin-right: 10px;
+}
+
+.section ul.content {
+    list-style: none;
+    padding: 10px;
+    margin: 10px 0;
+    display: none;
+    /* Bắt đầu ẩn */
+    background-color: #f0f0f0;
+    /* Màu nền mặc định */
+    transition: background-color 0.3s;
+    border-left: 2px solid #006b68;
+    /* Đường nối từ label_pane đến content */
+}
+
+.section ul.content.active {
+    background-color: #ffffff;
+    /* Sub-content nền trắng */
+    color: black;
+    /* Chữ màu đen */
+}
+
+.section ul li {
+    padding: 5px 0;
+}
+
+.section .sub-content {
+    margin-left: 20px;
+    display: none;
+    /* Ẩn nội dung con */
+    background-color: white;
+    color: black;
+}
+
+.section ul li.active>.sub-content {
+    display: block;
+    /* Hiển thị nội dung con khi được kích hoạt */
+}
+
+.section .label_pane-expand {
+    font-size: 12px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#light-mode-label_pane {
+    padding: 5px 10px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    width: 95%;
+    /* Đặt chiều rộng của ô tìm kiếm để phù hợp với sidebar */
+    padding: 10px;
+    /* Thêm khoảng cách bên trong */
+    margin: 10px 10px;
+    /* Thêm khoảng cách xung quanh ô tìm kiếm */
+    border: 1px solid #ddd;
+    /* Thêm đường viền cho ô tìm kiếm */
+    border-radius: 4px;
+    /* Bo tròn góc của ô tìm kiếm */
+    box-sizing: border-box;
+    /* Đảm bảo padding và border được tính vào tổng chiều rộng */
+    font-size: 16px;
+    /* Thay đổi kích thước chữ nếu cần */
+    outline: none;
+    /* Loại bỏ viền mặc định khi focus */
+    transition: border-color 0.3s ease-in-out;
+    /* Thêm hiệu ứng chuyển tiếp cho border */
+}
+
+input[type="text"]:focus {
+    border-color: #00bfa5;
+    /* Thay đổi màu viền khi ô tìm kiếm được chọn */
+    box-shadow: 0 0 5px rgba(0, 191, 165, 0.5);
+    /* Thêm bóng cho ô tìm kiếm khi focus */
+}
